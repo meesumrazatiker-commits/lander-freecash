@@ -5,10 +5,500 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freecash - Earn Money Playing Games</title>
     <meta name="description" content="Download Freecash app, play games, and get paid via PayPal and other popular payment methods in the UK">
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 2rem 1rem 1.5rem;
+            background: transparent;
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4aa 50%, #00b894 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-left: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 1rem 2rem;
+            text-align: center;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #00ff88 50%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* CTA Buttons Container */
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
+            color: #0a0a0a;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+            min-width: 160px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-arrow {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover .button-arrow {
+            transform: translateX(3px);
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Earning Ticker */
+        .earning-ticker {
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            border-radius: 25px;
+            padding: 0.8rem 1rem;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .ticker-icon {
+            font-size: 1.2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .ticker-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 0.9rem;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Instructions Section */
+        .instructions {
+            padding: 2rem 1rem;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #00ff88 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .steps {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.15);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
+            color: #0a0a0a;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .step-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.4rem;
+        }
+
+        .step-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* Get Started Section */
+        .get-started {
+            padding: 2rem 1rem;
+            background: transparent;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .get-started-content h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #00ff88 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .get-started-content p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 2rem 1rem;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonials-slider {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .testimonials-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonials-slider {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .testimonials-slider .testimonial-card {
+            min-width: 300px;
+            scroll-snap-align: start;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(0, 212, 170, 0.08) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.1);
+            position: relative;
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0, 255, 136, 0.15);
+        }
+
+        .stars {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 2rem 1rem;
+            background: transparent;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #00ff88 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .final-cta p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: #00ff88;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                margin: 0 auto;
+                box-shadow: 0 0 30px rgba(0, 255, 136, 0.08);
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .steps {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .trust-badges {
+                gap: 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: row;
+            }
+            
+            .testimonials-slider .testimonial-card {
+                min-width: 350px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .steps {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .testimonials-slider .testimonial-card {
+                min-width: 380px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -88,22 +578,22 @@
             <h3 class="section-title">What Our Users Say</h3>
             <div class="testimonials-slider">
                 <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐⭐</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"I earned £50 in my first week just by playing games I already enjoy!"</p>
                     <div class="testimonial-author">- Sarah K., London</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐⭐</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"Freecash is legit! I've cashed out £200+ to my PayPal this month alone."</p>
                     <div class="testimonial-author">- Mike T., Manchester</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐⭐</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"Best rewards app! Made £150 last week while watching TV and gaming."</p>
                     <div class="testimonial-author">- Emma R., Birmingham</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐⭐</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"Instant payouts to my bank account. This app really pays!"</p>
                     <div class="testimonial-author">- James L., Glasgow</div>
                 </div>
@@ -131,6 +621,69 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // JavaScript for Freecash Lander
+
+        // Earning ticker messages
+        const tickerMessages = [
+            "Sarah just earned £127.50!",
+            "Mike earned £89.00 playing games!",
+            "Emma earned £156.75 today!",
+            "James earned £203.25 this week!",
+            "Lisa earned £94.50 in 2 hours!"
+        ];
+
+        let currentTickerIndex = 0;
+
+        // Function to rotate ticker messages
+        function rotateTicker() {
+            const tickerElement = document.getElementById('tickerText');
+            if (tickerElement) {
+                // Fade out
+                tickerElement.style.opacity = '0.3';
+                
+                setTimeout(() => {
+                    // Change text
+                    currentTickerIndex = (currentTickerIndex + 1) % tickerMessages.length;
+                    tickerElement.textContent = tickerMessages[currentTickerIndex];
+                    
+                    // Fade in
+                    tickerElement.style.opacity = '1';
+                }, 1500);
+            }
+        }
+
+        // Start ticker rotation
+        setInterval(rotateTicker, 3000);
+
+        // Handle download button clicks
+        function handleDownload() {
+            // Freecash affiliate link
+            const affiliateLink = 'https://glctrk.org/aff_c?offer_id=3531&aff_id=22375&source=fc-test-01';
+            
+            // Track click event (optional)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download_click', {
+                    'event_category': 'engagement',
+                    'event_label': 'freecash_download'
+                });
+            }
+            
+            // Open affiliate link in same tab
+            window.location.href = affiliateLink;
+        }
+
+        // Add smooth scroll behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for better UX
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Initialize first ticker message
+            const tickerElement = document.getElementById('tickerText');
+            if (tickerElement) {
+                tickerElement.textContent = tickerMessages[0];
+            }
+        });
+    </script>
 </body>
 </html>
