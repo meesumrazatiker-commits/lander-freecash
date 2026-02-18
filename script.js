@@ -34,8 +34,8 @@ setInterval(rotateTicker, 3000);
 
 // Handle download button clicks
 function handleDownload() {
-    // Replace with your actual affiliate link
-    const affiliateLink = 'https://freecash.com/r/YOUR_AFFILIATE_CODE';
+    // Freecash affiliate link
+    const affiliateLink = 'https://glctrk.org/aff_c?offer_id=3531&aff_id=22375&source=fc-test-01';
     
     // Track click event (optional)
     if (typeof gtag !== 'undefined') {
@@ -45,8 +45,8 @@ function handleDownload() {
         });
     }
     
-    // Open affiliate link in new tab
-    window.open(affiliateLink, '_blank');
+    // Open affiliate link in same tab
+    window.location.href = affiliateLink;
 }
 
 // Add smooth scroll behavior
