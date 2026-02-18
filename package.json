@@ -1,0 +1,23 @@
+{
+  "name": "freecash-lander",
+  "version": "1.0.0",
+  "description": "Mobile-optimized landing page for Freecash affiliate program",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Build complete - static files ready for deployment'",
+    "dev": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "freecash",
+    "affiliate",
+    "landing-page",
+    "mobile",
+    "vercel"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
